@@ -3,399 +3,185 @@ doingList = document.querySelector('#doing')
 doneList  = document.querySelector('#done')
 
 
-
-// toDoListBottomSection = document.querySelector('#to-do .list-bottom-section')
-// doingListBottomSection = document.querySelector('#doing .list-bottom-section')
-// doneListBottomSection = document.querySelector('#done .list-bottom-section')
-
 toDoListBottomSection = toDoList.querySelector('.list-bottom-section')
 doingListBottomSection = doingList.querySelector('.list-bottom-section')
 doneListBottomSection = doneList.querySelector('.list-bottom-section')
+
+toDoListCardContainer = toDoList.querySelector('.card-container')
+doingListCardContainer = doingList.querySelector('.card-container')
+doneListCardContainer = doneList.querySelector('.card-container')
 
 toDoListAddCardButton = toDoList.querySelector('.add-card')
 doingListAddCardButton = doingList.querySelector('.add-card')
 doneListAddCardButton = doneList.querySelector('.add-card')
 
+function initDeleteCard(cardContainer) {
+    cardContainer.addEventListener('click', function(e) {
+        const tgt = e.target;
+        if (tgt.classList.contains('fa-trash-alt')) tgt.closest('div').remove();
+      })
+}
 
+initDeleteCard(toDoListCardContainer)
+initDeleteCard(doingListCardContainer)
+initDeleteCard(doneListCardContainer)
 
-console.log(toDoList); console.log(doingList); console.log(doneList); console.log(toDoListBottomSection); console.log(doingListBottomSection);
-console.log(doneListBottomSection); console.log(toDoListAddCardButton); console.log(doingListAddCardButton); console.log(doneListAddCardButton); 
+addCardInit(toDoList, toDoListAddCardButton, toDoListBottomSection)
+addCardInit(doingList, doingListAddCardButton, doingListBottomSection)
+addCardInit(doneList, doneListAddCardButton, doneListBottomSection)
 
-// init(toDoListAddCardButton, toDoListBottomSection).then(
-//     (onResolved) => {
 
-//         init(doingListAddCardButton, doingListBottomSection).then(
-//             (onResolved) => {init(doneListAddCardButton, doneListBottomSection)}
+function addCardInit(list, listAddCardButton, listBottomSection) {
+    listAddCardButton.addEventListener('click',()=> {
 
-            
-//         )
-//     },
-//     (onRejected) => {
-//         // Some task on failure
-//     }
-    
-// )
-
-
-toDoListAddCardButton.addEventListener('click',()=> {
-    // console.log(e);
-    // console.log(e.target);
-    // listBottomSection[indx].style.marginTop = '15px'
-    // listBottomSection[indx].style.marginBottom = '15px'
-    toDoListBottomSection.innerHTML = `<textarea name="text1" id="" cols="30" rows="5" placeholder="Enter Title..."></textarea>
-
-    <div class="bottom-section">
-
-
-
-        <div class="tag">
-
-
-
-
-        <div class="dropdown">
-                    
-                    
-                        <select class="importance-value dropbtn">
-                            <div class="dropdown-content">
-                            <option class="low"value="1">Low</option>
-                            <option class="normal" value="2" selected="selected">Normal</option>
-                            <option class="high" value="3">High</option>
-                        </div>
-                          </select>
-             </div>
-
-
-
-
-        </div>
-        <button class="submit">Add Card</button>
-        <button class="cancel">Cancel</button>`
-        // e.target.classList.remove('before-click')
-        setTimeout(() => {
-            toDoList.querySelector('.cancel').addEventListener('click', () =>{
-                toDoListBottomSection.innerHTML = ""
-                toDoListBottomSection.appendChild(toDoListAddCardButton)}
-            )
-            toDoList.querySelector('.submit').addEventListener('click', () =>{
-                console.log(toDoList.querySelector('textarea').value);
-                console.log(toDoList.querySelector('.importance-value').value);
-            }
-            )
-        }, false);
-         
-       
-        // e.target.classList.remove('add-card')
-
-
-// cb = 
-// setInterval(() => {
-//     console.log(cb.checked);
-// }, 1000);
-//     })
-
-})
-
-doingListAddCardButton.addEventListener('click',()=> {
-    // console.log(e);
-    // console.log(e.target);
-    // listBottomSection[indx].style.marginTop = '15px'
-    // listBottomSection[indx].style.marginBottom = '15px'
-    doingListBottomSection.innerHTML = `<textarea name="text1" id="" cols="30" rows="5" placeholder="Enter Title..."></textarea>
-
-    <div class="bottom-section">
-
-
-
-        <div class="tag">
-
-
-
-
-        <div class="dropdown">
-                    
-                    
-                        <select class="importance-value dropbtn">
-                            <div class="dropdown-content">
-                            <option class="low"value="1">Low</option>
-                            <option class="normal" value="2" selected="selected">Normal</option>
-                            <option class="high" value="3">High</option>
-                        </div>
-                          </select>
-             </div>
-
-
-
-
-        </div>
-        <button class="submit">Add Card</button>
-        <button class="cancel">Cancel</button>`
-        // e.target.classList.remove('before-click')
-        setTimeout(() => {
-            doingList.querySelector('.cancel').addEventListener('click', () =>{
-                doingListBottomSection.innerHTML = ""
-                doingListBottomSection.appendChild(doingListAddCardButton)}
-            )
-            doingList.querySelector('.submit').addEventListener('click', () =>{
-                console.log(doingList.querySelector('textarea').value);
-                console.log(doingList.querySelector('.importance-value').value);
-            }
-            )
-        }, false);
-         
-       
-        // e.target.classList.remove('add-card')
-
-
-// cb = 
-// setInterval(() => {
-//     console.log(cb.checked);
-// }, 1000);
-//     })
-
-})
-
-doneListAddCardButton.addEventListener('click',()=> {
-    // console.log(e);
-    // console.log(e.target);
-    // listBottomSection[indx].style.marginTop = '15px'
-    // listBottomSection[indx].style.marginBottom = '15px'
-    doneListBottomSection.innerHTML = `<textarea name="text1" id="" cols="30" rows="5" placeholder="Enter Title..."></textarea>
-
-    <div class="bottom-section">
-
-
-
-        <div class="tag">
-
-
-
-
-        <div class="dropdown">
-                    
-                    
-                        <select class="importance-value dropbtn">
-                            <div class="dropdown-content">
-                            <option class="low"value="1">Low</option>
-                            <option class="normal" value="2" selected="selected">Normal</option>
-                            <option class="high" value="3">High</option>
-                        </div>
-                          </select>
-             </div>
-
-
-
-
-        </div>
-        <button class="submit">Add Card</button>
-        <button class="cancel">Cancel</button>`
-        // e.target.classList.remove('before-click')
-        setTimeout(() => {
-            doneList.querySelector('.cancel').addEventListener('click', () =>{
-                doneListBottomSection.innerHTML = ""
-                doneListBottomSection.appendChild(doneListAddCardButton)}
-            )
-            doneList.querySelector('.submit').addEventListener('click', () =>{
-                console.log(doneList.querySelector('textarea').value);
-                console.log(doneList.querySelector('.importance-value').value);
-            }
-            )
-        }, false);
-         
-       
-        // e.target.classList.remove('add-card')
-
-
-// cb = 
-// setInterval(() => {
-//     console.log(cb.checked);
-// }, 1000);
-//     })
-
-})
-
-
-
-
-
-
-
-
-
-// init(toDoListAddCardButton, toDoListBottomSection)
-// init(doingListAddCardButton, doingListBottomSection)
-// init(doneListAddCardButton, doneListBottomSection)
-
-function init(element, other) {
-    element.addEventListener('click',()=> {
-        // console.log(e);
-        // console.log(e.target);
-        // listBottomSection[indx].style.marginTop = '15px'
-        // listBottomSection[indx].style.marginBottom = '15px'
-        other.innerHTML = `<textarea name="text1" id="" cols="30" rows="5" placeholder="Enter Title..."></textarea>
-
+        listBottomSection.innerHTML = `<textarea name="text1" id="" cols="30" rows="5" placeholder="Enter Title..."></textarea>
         <div class="bottom-section">
-
-
-
             <div class="tag">
-
-
-
-
             <div class="dropdown">
-                    <button class="dropbtn">Dropdown</button>
-                    <div class="dropdown-content">
-                      <!-- <a href="#">Link 1</a>
-                      <a href="#">Link 2</a>
-                      <a href="#">Link 3</a> -->
-                      <label><input type="checkbox" class="radio" value="1" name="fooby[2][]" />Low</label>
-                      <label><input type="checkbox" class="radio" value="1" name="fooby[2][]" />Normal</label>
-                      <label><input type="checkbox" class="radio" value="1" name="fooby[2][]" />High</label>
-                    </div>
-                  </div>
-
-
-
-
+                            <select class="importance-value dropbtn">
+                                <div class="dropdown-content">
+                                <option class="low"value="1">Low</option>
+                                <option class="normal" value="2" selected="selected">Normal</option>
+                                <option class="high" value="3">High</option>
+                            </div>
+                              </select>
+                 </div>
             </div>
             <button class="submit">Add Card</button>
             <button class="cancel">Cancel</button>`
-            // e.target.classList.remove('before-click')
+             
             setTimeout(() => {
-                deleteAddButton(element.querySelector('.cancel'), other)
+                list.querySelector('.cancel').addEventListener('click', () =>{
+                    listBottomSection.innerHTML = ""
+                    listBottomSection.appendChild(listAddCardButton)}
+                )
+                list.querySelector('.submit').addEventListener('click', () =>{
+                    textValue = list.querySelector('textarea').value.trim()
+                    if (textValue.length > 0){
+                        newCard = document.createElement('div')
+                        newCard.classList.add('card')
+                        newCard.setAttribute('draggable', true);
+                        newCard.innerHTML = textValue + '<i class="far fa-trash-alt"></i>';
+                        var color
+                        switch (parseInt(list.querySelector('.importance-value').value)) {
+                            case 1:
+                                color = 'rgb(43,184,231)'
+                                break;
+                            case 3:
+                                color = 'rgb(228,67,67)'
+                                    break;
+                            default:
+                                color = 'white'
+                                break;
+                        }
+                        newCard.style.backgroundColor = color
+                        list.querySelector('.card-container').appendChild(newCard)
+                        listBottomSection.innerHTML = ""
+                    listBottomSection.appendChild(listAddCardButton)}
+                    }
+                
+                )
             }, false);
              
-           
-            // e.target.classList.remove('add-card')
+    
+    })    
+}
 
 
-// cb = 
-// setInterval(() => {
-//     console.log(cb.checked);
-// }, 1000);
-//     })
+var dragged
+document.addEventListener("drag", function( event ) {
+    event.preventDefault()
+}, false);
+let rect
+let listt
+document.addEventListener("dragstart", function( event ) {
+    if (event.target.className == 'card') {
+
+    dragged = event.target;
+    rect = event.target.parentNode;
+    listt = event.target.parentNode.parentNode
+
+    setTimeout(() => {
+        rect.parentNode.querySelectorAll('.card-container')[1].classList.add('active')
+    rect.parentNode.querySelectorAll('.card-container')[1].style.height = dragged.getBoundingClientRect().height + 'px'
+    }, 0);
+    }
+    
+}, false);
+
+document.addEventListener("dragenter", function( event ) {
+    if ( event.target.className == "card-container real" ) {
+        rect = event.target;
+    
+        rect.parentNode.querySelectorAll('.card-container')[1].classList.add('active')
+        
+        rect.parentNode.querySelectorAll('.card-container')[1].style.height = dragged.getBoundingClientRect().height + 'px'
+
+    }
+    if ( event.target.className == "list" ) {
+        listt = event.target;
+        
+    }
     
 })
-
-setTimeout(() => {
-    return Promise.resolve("Success");
-}, false);
-}
-
-function deleteAddButton(element, other) {
-    element.addEventListener('click', ()=>{
-        other.innerHTML = '<div class="add-card before-click">+ Add Card</div>'
-    })
-}
-
-
-
-// addCardButtons.forEach((button, indx)=>{
-//     button.addEventListener('click',function(e) {
-//         console.log(e);
-//         console.log(e.target);
-//         listBottomSection[indx].style.marginTop = '15px'
-//         listBottomSection[indx].style.marginBottom = '15px'
-//         listBottomSection[indx].innerHTML = `<textarea name="text1" id="" cols="30" rows="5" placeholder="Enter Title..."></textarea>
-
-//         <div class="bottom-section">
-
-
-
-//             <div class="tag">
-
-
-
-
-//             <div class="dropdown">
-//                     <button class="dropbtn">Dropdown</button>
-//                     <div class="dropdown-content">
-//                       <!-- <a href="#">Link 1</a>
-//                       <a href="#">Link 2</a>
-//                       <a href="#">Link 3</a> -->
-//                       <label><input type="checkbox" class="radio" value="1" name="fooby[2][]" />Low</label>
-//                       <label><input type="checkbox" class="radio" value="1" name="fooby[2][]" />Normal</label>
-//                       <label><input type="checkbox" class="radio" value="1" name="fooby[2][]" />High</label>
-//                     </div>
-//                   </div>
-
-
-
-
-//             </div>
-//             <button id="submit">Add Card</button>
-//             <button id="cancel">Cancel</button>`
-//             e.target.classList.remove('before-click')
-//             cancelButton = document.
-//             // e.target.classList.remove('add-card')
-
-
-// cb = 
-// setInterval(() => {
-//     console.log(cb.checked);
-// }, 1000);
-//     })
+document.addEventListener("dragleave", function( event ) {
     
-// })
+    if(event.clientY <= rect.getBoundingClientRect().top || event.clientY >= rect.getBoundingClientRect().bottom || event.clientX <= rect.getBoundingClientRect().left || event.clientX >= rect.getBoundingClientRect().right) {
+        
+    }
+    setTimeout(() => {
+        if (event.clientY <= listt.getBoundingClientRect().top || event.clientY >= listt.getBoundingClientRect().bottom || event.clientX <= listt.getBoundingClientRect().left || event.clientX >= listt.getBoundingClientRect().right) {
+            if (event.target.className == 'list') {
+                
+                event.target.querySelectorAll('.card-container')[1].classList.remove('active');
+                event.target.querySelectorAll('.card-container')[1].style.height = 0
+            }
+            
+           }
+    }, false);
+   
+})
 
+document.addEventListener("dragover", function( event ) {
+    
+    event.preventDefault()
+}, false);
+document.addEventListener("drop", function( event ) {
+   
+    event.preventDefault();
+    
+    
+    if ( event.target.className == "card-container active" ) {    
+           
+        event.target.parentNode.querySelectorAll('.card-container')[0].appendChild(dragged)
+        
+        
+    }
+        try {
+            toDoList.querySelectorAll('.card-container')[1].classList.remove('active');
+            toDoList.querySelectorAll('.card-container')[1].style.height = 0
+          }
+          catch(err) {
 
+          }
+          try {
+            doneList.querySelectorAll('.card-container')[1].classList.remove('active');
+        doneList.querySelectorAll('.card-container')[1].style.height = 0
+          }
+          catch(err) {
 
+          }
+          try {
+            doingList.querySelectorAll('.card-container')[1].classList.remove('active');
+        doingList.querySelectorAll('.card-container')[1].style.height = 0
+          }
+          catch(err) {
 
-// });
-
-
-
-
-// var checkList = document.getElementById('list1');
-// checkList.getElementsByClassName('anchor')[0].onclick = function(evt) {
-//   if (checkList.classList.contains('visible'))
-//     checkList.classList.remove('visible');
-//   else
-//     checkList.classList.add('visible');
-// }
-
-
-
-
-
-
-
-
-// btn = document.getElementById('ddlViewBy')
-// setInterval(() => {
-//     console.log(btn.value);
-// }, 1000);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* <div class="sec-center">       
-<input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-<label class="for-dropdown" for="dropdown">importance: DEFAULT<i class="uil uil-arrow-down"></i></label>
-<div class="section-dropdown"> 
-<a href="#" id="low">LOW<i class="uil uil-arrow-right"></i></a>
-<a href="#" id="default">DEFAULT<i class="uil uil-arrow-right"></i></a>
-<a href="#" id="high">HIGH<i class="uil uil-arrow-right"></i></a>
-</div>
-</div> */}
+          }
+         
+        
+        
+    
+    
+  
+}, false);
